@@ -1,2 +1,4 @@
 rootProject.name = 'SortMethods'
+include 'core'
+include 'quicksort'
 

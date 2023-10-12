@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.swlo.quicksort'
+version = '1.0-SNAPSHOT'
+
+compileJava.options.encoding = 'UTF-8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    implementation project(':core')
+
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+jar {
+    configurations.implementation.setCanBeResolved(true)
+    from { configurations.implementation.collect { it.isDirectory() ? it : zipTree(it) } }
+}
