@@ -11,7 +11,7 @@ import java.util.List;
 public class ArchiveUtils {
 
 
-    public static void writeFile(String url, int[] array) {
+    public void writeFile(String url, int[] array) {
         Path path = Paths.get(url);
 
         String text = Arrays.toString(array);
@@ -25,7 +25,7 @@ public class ArchiveUtils {
         }
     }
 
-    public static void writeFile(String stringPath, String array) {
+    public void writeFile(String stringPath, String array) {
         Path path = Paths.get(stringPath);
         byte[] byteText = array.getBytes();
 
@@ -36,7 +36,7 @@ public class ArchiveUtils {
         }
     }
 
-    public static void writeFile(String stringPath, int[] array, String algorithmName, long executionTime, long comparativesQuantity, long movementsQuantity) {
+    public void writeFile(String stringPath, int[] array, String algorithmName, long executionTime) {
         Path path = Paths.get(stringPath);
 
         int milliSeconds = (int) (executionTime % 1000);
@@ -49,8 +49,6 @@ public class ArchiveUtils {
 
         String text = "Algorithm: " + algorithmName
                 + "Execution Time: " + time
-                + "\nComparatives Quantity: " + comparativesQuantity
-                + "\nMovements Quantity: " + movementsQuantity
                 + "\n\n";
 
 
