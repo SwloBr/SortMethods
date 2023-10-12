@@ -1,8 +1,16 @@
 package com.swlo.quicksort.sort;
 
-public class QuickSort {
+import com.swlo.core.SortInterface;
 
-    public int[] sort(int[] array, int start, int end) {
+public class QuickSort implements SortInterface {
+
+    @Override
+    public int[] sort(int[] array) {
+
+        return quickSort(array, 0, array.length - 1);
+    }
+
+    private int[] quickSort(int[] array, int start, int end) {
         if (start < end) {
             // Select the pivot
             int pivot = array[(start + end) / 2];
@@ -34,8 +42,8 @@ public class QuickSort {
             }
 
             // Recursively call quick sort for the two subarrays
-            int[] subarray1 = sort(array, start, j);
-            int[] subarray2 = sort(array, i, end);
+            int[] subarray1 = quickSort(array, start, j);
+            int[] subarray2 = quickSort(array, i, end);
 
             // Combine the two sorted subarrays
             int[] sortedArray = new int[subarray1.length + subarray2.length];
@@ -50,5 +58,6 @@ public class QuickSort {
             return sortedArray;
         }
     }
+
 
 }
