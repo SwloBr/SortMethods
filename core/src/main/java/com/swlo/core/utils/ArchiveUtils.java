@@ -11,8 +11,8 @@ import java.util.List;
 public class ArchiveUtils {
 
 
-    public void writeFile(String url, int[] array) {
-        Path path = Paths.get(url);
+    public void writeFile(String stringPath, int[] array) {
+        Path path = Paths.get(stringPath);
 
         String text = Arrays.toString(array);
 
