@@ -1,4 +1,4 @@
-package com.swlo.quicksort.sort;
+package com.swlo.sort;
 
 import com.swlo.core.SortInterface;
 
