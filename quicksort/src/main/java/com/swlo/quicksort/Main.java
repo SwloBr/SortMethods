@@ -2,7 +2,7 @@ package com.swlo.quicksort;
 
 import com.swlo.core.SortInterface;
 import com.swlo.core.utils.ArchiveUtils;
-import com.swlo.quicksort.sort.QuickSort;
+import com.swlo.sort.QuickSort;
 import org.apache.commons.cli.*;
 
 public class Main {
