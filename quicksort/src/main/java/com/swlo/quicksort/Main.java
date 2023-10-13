@@ -32,7 +32,7 @@ public class Main {
 
             archiveUtils.writeFile(outputFilePath, sortedArray, "Quick Sort", closeTimer - initTimer);
         } catch (ParseException e) {
-            System.err.println("Erro ao processar os argumentos: " + e.getMessage());
+            System.err.println("Error for process arguments: " + e.getMessage());
         }
     }
 }
