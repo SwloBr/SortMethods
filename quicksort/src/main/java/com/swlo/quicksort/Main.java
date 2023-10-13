@@ -3,23 +3,36 @@ package com.swlo.quicksort;
 import com.swlo.core.SortInterface;
 import com.swlo.core.utils.ArchiveUtils;
 import com.swlo.quicksort.sort.QuickSort;
+import org.apache.commons.cli.*;
 
 public class Main {
     private static ArchiveUtils archiveUtils = new ArchiveUtils();
     private static SortInterface sort = new QuickSort();
 
-    public static void main(String[] args, String inputFilePath, String outputFilePath) {
+    public static void main(String[] args) {
+        Options options = new Options();
+        options.addOption("inputFilePath", true, "Input file path");
+        options.addOption("outputFilePath", true, "Output file path");
 
-        int[] unsortedArray = archiveUtils.readFile(inputFilePath);
+        CommandLineParser parser = new DefaultParser();
 
-        long initTimer = System.currentTimeMillis();
+        try {
+            CommandLine cmd = parser.parse(options, args);
 
-        int[] sortedArray = sort.sort(unsortedArray);
+            String inputFilePath = cmd.getOptionValue("inputFilePath");
+            String outputFilePath = cmd.getOptionValue("outputFilePath");
 
-        long closeTimer = System.currentTimeMillis();
+            int[] unsortedArray = archiveUtils.readFile(inputFilePath);
 
-        archiveUtils.writeFile(outputFilePath, sortedArray, "Quick Sort", closeTimer - initTimer);
+            long initTimer = System.currentTimeMillis();
 
+            int[] sortedArray = sort.sort(unsortedArray);
+
+            long closeTimer = System.currentTimeMillis();
+
+            archiveUtils.writeFile(outputFilePath, sortedArray, "Quick Sort", closeTimer - initTimer);
+        } catch (ParseException e) {
+            System.err.println("Erro ao processar os argumentos: " + e.getMessage());
+        }
     }
-
 }
