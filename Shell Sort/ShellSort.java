@@ -22,8 +22,7 @@ class ShellSort {
 		System.out.println(); 
 	} 
 
-	public static void main(String args[]) 
-	{ 
+	public static void main(String args[]) { 
 		int arr[] = {100, 25, 17, 34, 26}; 
         int n = arr.length;
 		System.out.print("Array before sorting: "); 
