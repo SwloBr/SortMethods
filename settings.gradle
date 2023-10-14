@@ -2,4 +2,5 @@ rootProject.name = 'SortMethods'
 include 'core'
 include 'quicksort'
 include 'mergesort'
+include 'insertionsort'
 
