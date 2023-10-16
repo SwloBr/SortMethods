@@ -1,0 +1,57 @@
+#include<stdio.h>
+void radixsort(int a[10], int n);
+void radixsort(int a[10],int n)
+{
+	int bkt[10][10],nelebkt[10],maxele,maxno,ndigit,itr,i,j,k,bktno,radix;
+	maxele=a[0];
+	ndigit=0;
+	for(i=1;i<n;i++)    //to find maximum number from array
+	    if(a[i]>maxele)
+	        maxele=a[i];
+	maxno=maxele;
+	while(maxele!=0)    //to find number of digits
+	{
+		ndigit++;
+		maxele=maxele/10;
+	}  
+	printf("\nmaxele=%d, no. of digit=%d",maxno,ndigit);
+	
+	radix=1;
+	for(itr=0;itr<ndigit;itr++)
+	{
+		for(i=0;i<10;i++)
+			nelebkt[i]=0;      //initialize number of elements in each bucket to zero
+	    for(i=0;i<n;i++)
+	    {
+	    	bktno=(a[i]/radix)%10;     //find bucket to insert the element
+	    	bkt[bktno][nelebkt[bktno]]=a[i];
+	    	nelebkt[bktno]+=1;
+		}
+	k=0;
+	for(i=0;i<10;i++)
+	    for(j=0;j<nelebkt[i];j++)
+	        a[k++]=bkt[i][j];
+	        
+	    radix=radix*10;
+	    printf("\nelements sorted on significant place-%d\n",itr+1);
+	    for(i=0;i<n;i++)
+	        printf("%d\t",a[i]);
+	}
+}
+
+void main()
+{
+	int n,i,a[10];
+	printf("\nEnter the number of elements:");
+	scanf("%d",&n);
+	printf("\nEnter the array elements for sorting:");
+	for(i=0;i<n;i++)
+	    scanf("%d",&a[i]);
+	    printf("\nOriginal array:\n");
+	for(i=0;i<n;i++)
+	    printf("%d\t",a[i]);
+	radixsort(a,n);
+	printf("\nArray after sorting:\n");
+	for(i=0;i<n;i++)
+	    printf("%d\t",a[i]);
+}
